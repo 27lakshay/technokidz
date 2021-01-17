@@ -1,10 +1,11 @@
 const router = require("express").Router();
 const express = require("express");
-const verify = require("./verifyToken");
-const users = require("../models/user");
+const auth = require("../middleware/auth");
+const Teacher = require("../models/teacher");
+const Student = require("../models/student");
 
 //add verify to make the route private
-router.get("/", verify, (req, res) => {
+router.get("/", auth, (req, res) => {
   if (req.body.role == 0) {
     res.json({
       posts: {
@@ -21,14 +22,13 @@ router.get("/", verify, (req, res) => {
   }
 });
 
-router.post("/students", async (req, res) => {
-  console.log(req.body.role);
-  if (req.body.role == 0) {
-    const fetchData = await users.find({ role: "1" }).select("name");
-    res.json(fetchData);
-  } else {
-    res.json({ message: "value of role is not 0" });
-  }
+router.get("/students", async (req, res) => {
+  // if (req.body.role == 0) {
+  const fetchData = await Student.find({}, "name isChecked");
+  res.json(fetchData);
+  // } else {
+  // res.json({ message: "value of role is not 0" });
+  // }
 });
 
 module.exports = router;

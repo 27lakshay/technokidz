@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import backend from "../apis/index";
-import UserContext from "../context/UserContext";
+import UserContext from "../context/context";
 
 const List = () => {
   const [attendance, setAttendance] = useState("");
