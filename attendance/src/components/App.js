@@ -12,10 +12,11 @@ import history from "../history";
 import Login from "./login";
 import Students from "./students";
 import TeacherDashboard from "./dashboardTeacher";
+import StudentDashboard from "./dashboardStudent";
 
 const App = () => {
   const [userData, setUserData] = useState({
-    isLoggedIn: null,
+    isLoggedIn: false,
   });
   const token = localStorage.getItem("auth-token");
 
@@ -38,6 +39,7 @@ const App = () => {
       } catch (error) {
         console.log(error);
       }
+      console.log(userData);
     };
     getUser();
   }, []);
@@ -50,8 +52,8 @@ const App = () => {
           <Route path="/" exact component={Login} />
           <Route path="/login" exact component={Login} />
           <Route path="/register" exact component={Register} />
-          <Route path="/dashboard" exact component={TeacherDashboard} />
-          {/* <Route path="/student/dashboard" exact component={StudentDashboard} /> */}
+          <Route path="/teacher/dashboard" exact component={TeacherDashboard} />
+          <Route path="/student/dashboard" exact component={StudentDashboard} />
           <Route path="/students" exact component={Students} />
         </Switch>
       </Router>

@@ -23,7 +23,12 @@ const Login = () => {
       setUserData({
         isLoggedIn: true,
       });
-      history.push("/dashboard");
+      if (role == 0) {
+        history.push("/teacher/dashboard");
+      }
+      if (role == 1) {
+        history.push("/student/dashboard");
+      }
     } catch (err) {
       console.log(err);
     }
@@ -67,6 +72,7 @@ const Login = () => {
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control
+                style={{ maxWidth: "25rem" }}
                 type="email"
                 placeholder="Enter email"
                 value={email}
@@ -77,6 +83,7 @@ const Login = () => {
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
+                style={{ maxWidth: "25rem" }}
                 type="password"
                 placeholder="Password"
                 type="password"

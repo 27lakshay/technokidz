@@ -70,6 +70,7 @@ const Register = () => {
             <Form.Group controlId="formBasicName">
               <Form.Label>Full Name</Form.Label>
               <Form.Control
+                style={{ maxWidth: "25rem" }}
                 type="name"
                 placeholder="Enter Fullname"
                 value={name}
@@ -80,6 +81,7 @@ const Register = () => {
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control
+                style={{ maxWidth: "25rem" }}
                 type="email"
                 placeholder="Enter Email"
                 value={email}
@@ -90,6 +92,7 @@ const Register = () => {
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
+                style={{ maxWidth: "25rem" }}
                 type="password"
                 placeholder="Password"
                 type="password"

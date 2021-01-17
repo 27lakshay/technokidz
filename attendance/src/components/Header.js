@@ -7,10 +7,9 @@ import history from "../history";
 const Header = () => {
   const { userData, setUserData } = useContext(UserContext);
 
-  const checkLoginStatus = () => {
-    if (userData.isLoggedIn === true) return "true";
-    else return "false";
-  };
+  function checkLoginStatus() {
+    console.log(userData);
+  }
 
   const logout = () => {
     setUserData({
@@ -20,15 +19,6 @@ const Header = () => {
     localStorage.removeItem("auth-token");
     history.push("/login");
   };
-
-  function authButtonHandler(checkLoginStatus) {
-    if (true) {
-      logout();
-      setUserData({ isLoggedIn: false });
-    } else {
-      return console.log("fuck");
-    }
-  }
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -42,18 +32,20 @@ const Header = () => {
           <Nav.Link href="#register" as={Link} to="/register">
             Register
           </Nav.Link>
-          <Nav.Link href="#home" as={Link} to="/dashboard/teacher">
-            Dashboard
+          <Nav.Link href="#teacherdashboard" as={Link} to="/teacher/dashboard">
+            Teacher Dashboard
+          </Nav.Link>
+          <Nav.Link href="#studentdashboard" as={Link} to="/Student/dashboard">
+            Student Dashboard
           </Nav.Link>
           <Nav.Link
             href="#logout"
             as={Link}
             to="/login"
-            onClick={() => authButtonHandler}
+            onClick={() => logout()}
           >
-            {checkLoginStatus() ? "Login" : "Logout"}
+            LogOut
           </Nav.Link>
-          {/* <Nav.Link as={Link}>Logout</Nav.Link> */}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
